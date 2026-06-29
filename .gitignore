@@ -1,0 +1,27 @@
+# macOS system files (AppleDouble files like ._.venv, .DS_Store, etc.)
+._*
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+build/
+dist/
+*.egg-info/
+
+data/
+outputs/
+checkpoints/
+runs/
+events.out.tfevents.*
+
+*.pt
+*.pth
+*.bin
+*.onnx
+*.wav
+*.flac

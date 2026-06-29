@@ -1,0 +1,19 @@
+ZipEnhancer Repro
+Copyright (c) 2026 ZipEnhancer Repro Contributors
+
+This repository is an unofficial reproduction package. It is not affiliated
+with, endorsed by, or maintained by the original ZipEnhancer authors.
+
+Third-party notices:
+
+- `src/zipenhancer_repro/vendor/zipenhancer_community/` contains the minimum
+  community ModelScope ZipEnhancer implementation needed for strict-load
+  compatibility with official weights. Original author metadata is preserved
+  in the vendored source files.
+- `src/zipenhancer_repro/optim/_icefall_optim.py` adapts ScaledAdam/Eden
+  optimizer code from icefall.
+- `src/zipenhancer_repro/losses/mpsenet_loss.py` adapts MP-SENet-style
+  multi-resolution losses and PESQ-GAN discriminator logic for reproduction.
+
+Official model weights are not redistributed. Download them separately and
+place them under a local ignored directory such as `checkpoints/official/`.

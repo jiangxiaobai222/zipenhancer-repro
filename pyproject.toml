@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zipenhancer-repro"
+version = "0.1.0"
+description = "Unofficial ZipEnhancer reproduction and optimized offline inference."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "ZipEnhancer Repro Contributors" }]
+dependencies = [
+  "torch>=2.1",
+  "torchaudio>=2.1",
+  "numpy",
+  "PyYAML",
+  "librosa",
+  "soundfile",
+  "tqdm",
+  "tensorboard",
+  "pesq",
+  "pystoi",
+  "matplotlib",
+]
+
+[project.optional-dependencies]
+download = ["modelscope", "huggingface_hub", "pyarrow"]
+dev = ["pytest", "ruff"]
+
+[project.scripts]
+zipenhancer-train = "zipenhancer_repro.train:main"
+zipenhancer-infer = "zipenhancer_repro.infer:main"
+zipenhancer-evaluate = "zipenhancer_repro.evaluate:main"
+zipenhancer-verify-official = "zipenhancer_repro.verify_official:main"
+zipenhancer-infer-lite = "zipenhancer_repro.infer_opt.infer_lite:main"
+zipenhancer-verify-numeric = "zipenhancer_repro.infer_opt.verify_numeric:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+zipenhancer_repro = ["vendor/zipenhancer_community/configuration.json"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

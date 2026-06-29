@@ -1,0 +1,52 @@
+name: zipenhancer_s
+
+stft:
+  n_fft: 400
+  win_length: 400
+  hop_length: 100
+  compress_factor: 0.3
+  center: true
+  sample_rate: 16000
+
+loss:
+  lambda_pesq: 0.05
+  lambda_stft: 0.1
+  lambda_mag: 0.9
+  lambda_com: 0.1
+  lambda_pha: 0.3
+  lambda_time: 0.2
+  use_pesq_gan: true
+
+optim:
+  name: scaled_adam
+  base_lr: 0.04
+  clipping_scale: 2.0
+  disc_lr: 0.0005
+  eden:
+    warmup_steps: 4000
+    step_size: 2500
+    epoch_size: 24
+
+train:
+  dataset: voicebank
+  segment_seconds: 2.0
+  batch_size: 2
+  num_workers: 4
+  max_steps: 600000
+  grad_accum: 2
+  save_every_steps: 1000
+  eval_every_steps: 5000
+  log_every_steps: 50
+  seed: 1234
+  out_dir: outputs/zipenhancer_s
+
+eval:
+  subset: null
+  device: same
+
+data:
+  voicebank:
+    train_clean: data/VoiceBank/clean_trainset_28spk_wav
+    train_noisy: data/VoiceBank/noisy_trainset_28spk_wav
+    test_clean: data/VoiceBank/clean_testset_wav
+    test_noisy: data/VoiceBank/noisy_testset_wav
